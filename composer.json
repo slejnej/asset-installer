@@ -1,0 +1,23 @@
+{
+  "name": "slejnej/asset-installer",
+  "description": "Install npm from composer script",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jernej Slejko",
+      "email": "slejnej@gmail.com"
+    }
+  ],
+  "require": {
+    "ext-json": "*",
+    "php": "^7.3",
+    "symfony/filesystem": "~4.4.0",
+    "symfony/process": "~4.4.0",
+    "symfony/yaml": "~4.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "slejnej\\AssetInstaller\\": "src/"
+    }
+  }
+}
