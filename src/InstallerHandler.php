@@ -23,7 +23,7 @@ class InstallerHandler
    * @param Event $event A instance
    * @throws Exception
    */
-  public function installAssets(Event $event): void
+  public static function installAssets(Event $event): void
   {
     $options = self::getOptions($event);
     $npmAssets = self::collectNpmAssets($event->getComposer());
@@ -80,7 +80,7 @@ class InstallerHandler
    * @param Event $event
    * @throws Exception
    */
-  public function updateAssets(Event $event): void
+  public static function updateAssets(Event $event): void
   {
     $filesystem = new Filesystem();
     $filesystem->remove('package-lock.json');
@@ -95,7 +95,7 @@ class InstallerHandler
    * @return array
    * @throws Exception
    */
-  private function collectNpmAssets(Composer $composer): array
+  private static function collectNpmAssets(Composer $composer): array
   {
     $rootPackage = $composer->getPackage();
 
@@ -138,7 +138,7 @@ class InstallerHandler
    * @param int $timeout
    * @param bool $verbose
    */
-  private function npmInstall(IOInterface $inputOutput, int $timeout = 60, bool $verbose = false): void {
+  private static function npmInstall(IOInterface $inputOutput, int $timeout = 60, bool $verbose = false): void {
     $logLevel = $verbose ? 'info' : 'error';
     $npmInstallCmd = ['npm', 'install', '--no-audit', '--save-exact', '--no-optional', '--loglevel', $logLevel];
 
@@ -155,7 +155,7 @@ class InstallerHandler
    * @param int $timeout
    * @return int
    */
-  private function runProcess(IOInterface $inputOutput, array $cmd, int $timeout): int
+  private static function runProcess(IOInterface $inputOutput, array $cmd, int $timeout): int
   {
     $inputOutput->write(implode(' ', $cmd));
 
@@ -178,7 +178,7 @@ class InstallerHandler
    * @param int $timeout
    * @param bool $verbose
    */
-  private function npmCi(IOInterface $inputOutput, int $timeout = 60, bool $verbose = false): void
+  private static function npmCi(IOInterface $inputOutput, int $timeout = 60, bool $verbose = false): void
   {
     $logLevel = $verbose ? 'info' : 'error';
     $npmCiCmd = ['npm', 'ci', '--loglevel', $logLevel];
@@ -194,7 +194,7 @@ class InstallerHandler
    * @param Event $event
    * @return array
    */
-  protected function getOptions(Event $event): array
+  protected static function getOptions(Event $event): array
   {
     $composer = $event->getComposer();
     $config = $composer->getConfig();
