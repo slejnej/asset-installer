@@ -10,10 +10,10 @@
   ],
   "require": {
     "ext-json": "*",
-    "php": "^7.4 || ^8.1",
-    "symfony/filesystem": "~4.4.0",
-    "symfony/process": "~4.4.0",
-    "symfony/yaml": "~4.4.0"
+    "php": ">=8.1",
+    "symfony/filesystem": "*",
+    "symfony/process": "*",
+    "symfony/yaml": "*"
   },
   "autoload": {
     "psr-4": {
